@@ -136,7 +136,7 @@ class Say(Node):
             pass
         if getattr(self, "attributes", None):
             rv.extend(self.attributes)
-        if getattr(self, "temporary_attributes", None):
+        if hasattr(self, 'temporary_attributes') and self.temporary_attributes:
             rv.append("@")
             rv.extend(self.temporary_attributes)
         rv.append(translation.encode_say_string(self.what))
